@@ -1,0 +1,35 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #192821;
+  background: #f5f3ec;
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+.shell { width: min(960px, 100% - 2rem); margin: 2.5rem auto; }
+h1 { font-size: clamp(2.6rem, 8vw, 5rem); letter-spacing: -.06em; line-height: 1; margin: 0 0 1.5rem; }
+h2 { margin: 0 0 1rem; font-size: 1.25rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 1rem; }
+.panel { background: #fffef9; border: 1px solid #d9ded4; border-radius: 1.25rem; padding: clamp(1rem, 4vw, 2rem); }
+.traffic-lights {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .9rem;
+  border: 2px solid #3b4641;
+  border-radius: 1.2rem;
+  background: #18221e;
+}
+.traffic-lights[data-orientation="vertical"] { flex-direction: column; }
+.light {
+  --signal-size: clamp(2.65rem, 12vw, 4rem);
+  display: block;
+  width: var(--signal-size);
+  height: var(--signal-size);
+  border: 2px solid #ffffff55;
+  border-radius: 50%;
+  background: var(--signal-color);
+}
+.light[data-color="red"] { --signal-color: #ff5b62; }
+.light[data-color="yellow"] { --signal-color: #ffca49; }
+.light[data-color="green"] { --signal-color: #55d99a; }
