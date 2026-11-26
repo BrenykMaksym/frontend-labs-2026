@@ -45,3 +45,8 @@ button:focus-visible, select:focus-visible, a:focus-visible { outline: 3px solid
 .stats > div { display: flex; justify-content: space-between; padding: .75rem 0; border-bottom: 1px solid #d9ded4; }
 .stats > div:last-child { font-weight: 700; border-bottom: 0; }
 .stats dd { margin: 0; font-variant-numeric: tabular-nums; }
+.actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.action:not(:disabled):hover { background: #e5efe6; }
+.action:disabled { opacity: .5; }
+.light { transition: background-color .3s ease, box-shadow .3s ease; }
+@media (prefers-reduced-motion: reduce) { .light { transition: none; } }
