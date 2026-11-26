@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const phases = [
   { color: 'red', duration: 3000 },
@@ -23,9 +23,13 @@ export default function useTrafficLights() {
     return () => clearTimeout(timer);
   }, [automatic, phase]);
 
+  const restoreSignal = useCallback(color => {
+    setPhase(phases.findIndex(phase => phase.color === color));
+  }, []);
+
   function selectSignal(color) {
     if (automatic) return;
-    setPhase(phases.findIndex(phase => phase.color === color));
+    restoreSignal(color);
     setCounts(previous => ({ ...previous, [color]: previous[color] + 1 }));
   }
 
@@ -40,6 +44,6 @@ export default function useTrafficLights() {
 
   return {
     currentSignal: phases[phase].color,
-    counts, orientation, automatic, selectSignal, setOrientation, start, stop,
+    counts, orientation, automatic, selectSignal, setOrientation, start, stop, restoreSignal,
   };
 }
